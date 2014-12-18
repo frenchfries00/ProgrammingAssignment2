@@ -1,10 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These are  two functions for computing the inverse of a matrix or, to save time, getting it 
+## from the cache if it is already there. The code is completely analogous to that from the test
+## example with the vector mean, I just replaced "mean" by "solve" and "m" by "inv". And it works.
 
-## Write a short comment describing this function
+## This function takes a matrix and makes from it a more complicated object with inv=NULL 
+## if the inverse has never been computed and inv equal to its inverse otherwise.
 
 makeCacheMatrix <- function(x = matrix()) {
-<<<<<<< HEAD
   inv <- NULL
   set <- function(y) {
     x <<- y
@@ -17,26 +18,22 @@ makeCacheMatrix <- function(x = matrix()) {
   list(set = set, get = get,
        setsolve = setsolve,
        getsolve = getsolve)
-=======
-
->>>>>>> 7f657dd22ac20d22698c53b23f0057e1a12c09b7
 }
 
 
-## Write a short comment describing this function
+## This function works on an object constructed from a matrix by makeCacheMatrix and gets its inverse, 
+## either from cache if it is already there, or by a new computation.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-<<<<<<< HEAD
+        ## if the inverse is in cache
   inv <- x$getsolve()
   if(!is.null(inv)) {
     message("getting cached data")
     return(inv)
   }
+  ## If the inverse is not in cache, compute it
   data <- x$get()
   inv <- solve(data, ...)
   x$setsolve(inv)
   inv
-=======
->>>>>>> 7f657dd22ac20d22698c53b23f0057e1a12c09b7
 }
